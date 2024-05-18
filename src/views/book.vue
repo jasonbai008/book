@@ -2,7 +2,7 @@
   <div class="content">
     <i class="el-icon-menu" @click="openMenu"></i>
     <h3>《{{ curTitle }}》</h3>
-    <audio :src="curUrl" controls></audio>
+    <audio :src="curUrl" controls id="player"></audio>
     <div class="list">
       <div class="item" v-for="(url, i) in list" :key="i">
         <el-button
@@ -53,6 +53,9 @@ export default {
     play(url, i) {
       this.curUrl = url;
       this.curIndex = i;
+      setTimeout(() => {
+        document.querySelector("#player").play();
+      }, 2000);
     },
   },
   watch: {
