@@ -4,6 +4,7 @@ module.exports = defineConfig({
   publicPath: "",
   outputDir: "docs",
   devServer: {
+    host: 'localhost',
     proxy: {
       "/asset2": {
         target: "https://lubanseven.gitee.io",
