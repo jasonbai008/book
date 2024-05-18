@@ -7,12 +7,12 @@ module.exports = defineConfig({
     host: 'localhost',
     proxy: {
       "/asset2": {
-        target: "https://lubanseven.gitee.io",
+        target: "https://jasonbai008.github.io",
         ws: true,
         changeOrigin: true,
       },
       "/asset": {
-        target: "https://lubanseven.gitee.io",
+        target: "https://jasonbai008.github.io",
         ws: true,
         changeOrigin: true,
       },

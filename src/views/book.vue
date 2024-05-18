@@ -1,10 +1,16 @@
 <template>
   <div class="content">
     <i class="el-icon-menu" @click="openMenu"></i>
+    <h3>《{{ curTitle }}》</h3>
+    <audio :src="curUrl" controls></audio>
     <div class="list">
       <div class="item" v-for="(url, i) in list" :key="i">
-        <h5>{{ url | genFileName }}</h5>
-        <audio :src="url" controls></audio>
+        <el-button
+          :type="curIndex === i ? 'primary' : ''"
+          size="mini"
+          @click="play(url, i)"
+          >{{ i + 1 }}</el-button
+        >
       </div>
     </div>
   </div>
@@ -15,6 +21,9 @@ export default {
   name: "book",
   data() {
     return {
+      curIndex: "",
+      curUrl: "",
+      curTitle: "",
       list: [
         // "https://lubanseven.gitee.io/asset/mp3/liuLangDiQiu/中国太阳_01.mp3",
       ],
@@ -22,12 +31,6 @@ export default {
   },
   mounted() {
     this.getList(this.$route.query.name, this.$route.query.origin);
-  },
-  filters: {
-    genFileName(link) {
-      let pos = link.lastIndexOf("/");
-      return link.slice(pos + 1).split(".")[0];
-    },
   },
   methods: {
     openMenu() {
@@ -39,7 +42,17 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           this.list = data;
+          this.curIndex = "";
+          this.curUrl = "";
+          this.genBookName();
         });
+    },
+    genBookName() {
+      this.curTitle = this.list[0].split("/").pop().split("_")[0];
+    },
+    play(url, i) {
+      this.curUrl = url;
+      this.curIndex = i;
     },
   },
   watch: {
@@ -61,6 +74,12 @@ export default {
   display: flex;
   flex-direction: column;
   // justify-content: center;
+  h3 {
+    margin-top: 180px;
+  }
+  audio {
+    margin: 30px auto;
+  }
 }
 .el-icon-menu {
   position: fixed;
@@ -73,9 +92,14 @@ export default {
   }
 }
 .list {
-  padding: 40px 10px 0;
+  padding: 10px 10px 0;
+  display: flex;
+  width: 300px;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap;
   .item {
-    margin-bottom: 30px;
+    margin: 20px;
     h5 {
       margin: 15px 0;
     }
