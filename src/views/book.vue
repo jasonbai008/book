@@ -78,7 +78,7 @@ export default {
   flex-direction: column;
   // justify-content: center;
   h3 {
-    margin-top: 180px;
+    margin-top: 150px;
   }
   audio {
     margin: 30px auto;
@@ -102,13 +102,10 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   .item {
-    margin: 20px;
-    h5 {
-      margin: 15px 0;
-    }
-    audio {
-      width: 88%;
-      max-width: 600px;
+    margin: 15px;
+    .el-button {
+      width: 43px;
+      text-align: center;
     }
   }
 }

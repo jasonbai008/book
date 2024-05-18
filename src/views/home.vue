@@ -3,7 +3,7 @@
     <!-- 欢迎页 -->
     <div class="inner">
       <!-- <img src="gif/logo.gif" alt="logo" /> -->
-      <lottie-player src="https://lottie.host/90677f08-449b-4fa2-ab83-0f6efc0d2434/dR0Gjc0B3n.json" background="transparent" speed="1" style="width: 180px; height: 180px" direction="1" mode="normal" loop autoplay></lottie-player>
+      <lottie-player src="https://lottie.host/90677f08-449b-4fa2-ab83-0f6efc0d2434/dR0Gjc0B3n.json" background="transparent" speed="1.2" style="width: 180px; height: 180px" direction="1" mode="normal" loop autoplay></lottie-player>
       <p>欢迎来到刘慈欣的科幻世界</p>
       <el-button @click="openDrawer" type="primary" size="small">开始听书</el-button>
     </div>
