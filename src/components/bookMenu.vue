@@ -45,8 +45,12 @@ export default {
       //   });
 
       // 后来一个代码仓库装不下了，就需要从两个代码仓库里获取音频列表
-      let menu1 = fetch(`/asset/api/list.json?time=${Date.now()}`).then((res) => res.json());
-      let menu2 = fetch(`/asset2/api/list.json?time=${Date.now()}`).then((res) => res.json());
+      // let menu1 = fetch(`/asset/api/list.json?time=${Date.now()}`).then((res) => res.json());
+      // let menu2 = fetch(`/asset2/api/list.json?time=${Date.now()}`).then((res) => res.json());
+      let baseUrl1 = "https://bai-asset.netlify.app";
+      let baseUrl2 = "https://bai-asset2.netlify.app";
+      let menu1 = fetch(`${baseUrl1}/api/list.json?time=${Date.now()}`).then((res) => res.json());
+      let menu2 = fetch(`${baseUrl2}/api/list.json?time=${Date.now()}`).then((res) => res.json());
       Promise.all([menu1, menu2]).then((resArr) => {
         this.menuList = resArr.flat(1);
       });

@@ -38,7 +38,9 @@ export default {
     },
     getList(bookName, audioOrigin) {
       // audioOrigin 播放源分为：asset asset2 两个代码仓库
-      fetch(`/${audioOrigin}/api/${bookName}.json?time=${Date.now()}`)
+      // fetch(`/${audioOrigin}/api/${bookName}.json?time=${Date.now()}`)
+      let bookUrl = `https://bai-${audioOrigin}.netlify.app/api/${bookName}.json?time=${Date.now()}`;
+      fetch(bookUrl)
         .then((res) => res.json())
         .then((data) => {
           this.list = data;
