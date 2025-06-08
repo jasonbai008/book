@@ -53,7 +53,13 @@ export default {
       this.curTitle = this.list[0].split("/").pop().split("_")[0];
     },
     play(url, i) {
-      this.curUrl = url;
+      // this.curUrl = url;
+      let isAsset2 = url.includes("asset2");
+      if (isAsset2) {
+        this.curUrl = 'https://bai-asset2.netlify.app/mp3/'+ url.split('/mp3/')[1];
+      } else {
+        this.curUrl = 'https://bai-asset.netlify.app/mp3/'+ url.split('/mp3/')[1];
+      }
       this.curIndex = i;
       setTimeout(() => {
         document.querySelector("#player").play();
